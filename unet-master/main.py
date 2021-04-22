@@ -3,6 +3,8 @@ from data import *
 
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
+tf.config.experimental_run_functions_eagerly(True)
+
 #数据增强参数
 data_gen_args = dict(rotation_range=0.2,  # 旋转
                     width_shift_range=0.05,  # 宽度变化
@@ -19,8 +21,9 @@ model = unet()
 model_checkpoint = ModelCheckpoint('unet_membrane.hdf5', monitor='loss',verbose=1, save_best_only=True)
 tb_callback = TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)
 # 训练网络
-model.fit_generator(myGene,steps_per_epoch=50, epochs=5, callbacks=[tb_callback])
+model.fit_generator(myGene,steps_per_epoch=50, epochs=1, callbacks=[tb_callback])
 # 测试网络
 testGene = testGenerator("data/membrane/test")
 results = model.predict_generator(testGene, 30, verbose=1)
+# results = model.evaluate(testGene, 30, verbose=1)
 saveResult("data/membrane/test", results)
