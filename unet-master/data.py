@@ -114,7 +114,7 @@ def labelVisualize(num_class, color_dict, img):
         img_out[img == i, :] = color_dict[i]
     return img_out / 255
 
-
+# 保存结果
 def saveResult(save_path,npyfile,flag_multi_class = False,num_class = 2):
     for i, item in enumerate(npyfile):
         img = labelVisualize(num_class, COLOR_DICT, item) if flag_multi_class else item[:, :, 0]
