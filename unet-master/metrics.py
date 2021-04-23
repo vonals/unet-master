@@ -34,7 +34,7 @@ def mean_iou_keras(y_true, y_pred):
     Returns:
         the mean IoU
     """
-    label = 1
+    label = 0
     # extract the label values using the argmax operator then
     # calculate equality of the predictions and truths to the label
     y_true = K.cast(K.equal(y_true, label), K.floatx())

@@ -21,7 +21,7 @@ model = unet()
 model_checkpoint = ModelCheckpoint('unet_membrane.hdf5', monitor='loss',verbose=1, save_best_only=True)
 tb_callback = TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)
 # 训练网络
-model.fit_generator(myGene,steps_per_epoch=50, epochs=1, callbacks=[tb_callback])
+model.fit_generator(myGene,steps_per_epoch=50, epochs=3, callbacks=[tb_callback])
 # 测试网络
 testGene = testGenerator("data/membrane/test")
 results = model.predict_generator(testGene, 30, verbose=1)
