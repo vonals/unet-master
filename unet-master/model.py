@@ -63,7 +63,7 @@ def unet(pretrained_weights = None,input_size = (256,256,1)):
 
     model = Model(inputs = inputs, outputs = conv10)
 
-    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy',mean_iou])
+    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy',mean_iou_keras])
     # optimizer:优化器及参数
     # loss:损失函数
     # metrics:评价指标
