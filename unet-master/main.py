@@ -1,6 +1,8 @@
+# 主函数
+#
 from model import *
 from data import *
-
+from net1 import *
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 tf.config.experimental_run_functions_eagerly(True)
@@ -15,8 +17,9 @@ data_gen_args = dict(rotation_range=0.2,  # 旋转
                     fill_mode='nearest')
 # 加载数据集
 myGene = trainGenerator(2, 'data/membrane/train', 'image', 'label', data_gen_args, save_to_dir = None)
-# 加载网络模型
+# 加载网络模型（测试多个）
 model = unet()
+#model = unet()
 # callback
 model_checkpoint = ModelCheckpoint('unet_membrane.hdf5', monitor='loss',verbose=1, save_best_only=True)
 tb_callback = TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)

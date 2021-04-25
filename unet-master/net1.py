@@ -1,4 +1,4 @@
-# 测试过的unet模型
+# 测试网络1号
 #
 import numpy as np
 import os
@@ -17,7 +17,7 @@ from metrics import *
 
 
 # 模型结构
-def unet(pretrained_weights = None,input_size = (256,256,1)):
+def net1(pretrained_weights = None,input_size = (256,256,1)):
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv1)

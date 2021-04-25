@@ -1,7 +1,9 @@
+# 有问题的评估函数
+#
 import keras.backend as K
 import numpy as np
 #
-# # 自定义评价函数1
+# # 自定义评价函数
 def iou_keras(y_true, y_pred):
     """
     Return the Intersection over Union (IoU).
