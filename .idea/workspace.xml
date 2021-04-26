@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="抢救回来能用">
-      <change afterPath="$PROJECT_DIR$/unet-master/UI/main.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unet-master/loss.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unet-master/net1.py" afterDir="false" />
+    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="添加模块注释，新增用于测试的网络文件，更新了界面调用模式（main.ui）">
+      <change afterPath="$PROJECT_DIR$/unet-master/view.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/Qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/Qt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/metrics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unet-master/net1.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/net1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="credentialsType com.jetbrains.python.remote.PyCreateRemoteInterpreterDialog$PyCreateRemoteSdkForm" value="Web Deployment" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -63,7 +62,7 @@
       <recent name="C:\Users\vona\Desktop\unet-master\unet-master\UI" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Qt">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Qt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="unet-master" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -154,8 +153,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Qt" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.Qt" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -194,7 +193,8 @@
       <workItem from="1618994912881" duration="6986000" />
       <workItem from="1619093533763" duration="155000" />
       <workItem from="1619183077423" duration="4119000" />
-      <workItem from="1619333266198" duration="388000" />
+      <workItem from="1619333266198" duration="16301000" />
+      <workItem from="1619421814147" duration="189000" />
     </task>
     <task id="LOCAL-00001" summary="添加评估函数（未使用）">
       <created>1618882374393</created>
@@ -238,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619333332634</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="添加模块注释，新增用于测试的网络文件，更新了界面调用模式（main.ui）">
+      <created>1619333883974</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1619333883974</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,12 +270,24 @@
     <MESSAGE value="测试了mIOU(不成功)，新建了metrics文件，更改iou函数位置" />
     <MESSAGE value="成功测试了mIOU（数据有问题）" />
     <MESSAGE value="抢救回来能用" />
-    <option name="LAST_COMMIT_MESSAGE" value="抢救回来能用" />
+    <MESSAGE value="添加模块注释，新增用于测试的网络文件，更新了界面调用模式（main.ui）" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加模块注释，新增用于测试的网络文件，更新了界面调用模式（main.ui）" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/unet-master/main.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/unet_master$Qt.coverage" NAME="Qt Coverage Results" MODIFIED="1619275904156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
+    <SUITE FILE_PATH="coverage/unet_master$Qt.coverage" NAME="Qt Coverage Results" MODIFIED="1619333826055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
     <SUITE FILE_PATH="coverage/unet_master$test.coverage" NAME="test Coverage Results" MODIFIED="1617781957417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
-    <SUITE FILE_PATH="coverage/unet_master$main.coverage" NAME="main Coverage Results" MODIFIED="1619320633913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
+    <SUITE FILE_PATH="coverage/unet_master$main.coverage" NAME="main Coverage Results" MODIFIED="1619352094967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
     <SUITE FILE_PATH="coverage/unet_lung$main.coverage" NAME="main Coverage Results" MODIFIED="1618571693324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
   </component>
 </project>

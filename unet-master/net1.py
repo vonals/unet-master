@@ -30,14 +30,14 @@ def net1(pretrained_weights = None,input_size = (256,256,1)):
     pool3 = MaxPooling2D(pool_size=(2, 2))(conv3)
     conv4 = Conv2D(512, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(pool3)
     conv4 = Conv2D(512, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv4)
-    drop4 = Dropout(0.5)(conv4)
-    pool4 = MaxPooling2D(pool_size=(2, 2))(drop4)
+
+    pool4 = MaxPooling2D(pool_size=(2, 2))(conv4)
 
     conv5 = Conv2D(1024, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(pool4)
     conv5 = Conv2D(1024, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv5)
-    drop5 = Dropout(0.5)(conv5)
 
-    up6 = Conv2D(512, 2, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(UpSampling2D(size = (2,2))(drop5))
+
+    up6 = Conv2D(512, 2, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(UpSampling2D(size = (2,2))(conv5))
     merge6 = Concatenate(axis=3)([conv4, up6])
     # merge6 = merge([drop4,up6], mode = 'concat', concat_axis = 3)
     conv6 = Conv2D(512, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(merge6)
@@ -65,7 +65,7 @@ def net1(pretrained_weights = None,input_size = (256,256,1)):
 
     model = Model(inputs = inputs, outputs = conv10)
 
-    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy',mean_iou_keras])
+    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy'])
     # optimizer:优化器及参数
     # loss:损失函数
     # metrics:评价指标
