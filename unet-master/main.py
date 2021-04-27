@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 #调试时使用（影响运行速度）
 # tf.config.experimental_run_functions_eagerly(True)
 
-#数据增强参数
+# 数据增强参数
+# 训练集参数
 data_gen_args = dict(rotation_range=0.2,  # 旋转
                     width_shift_range=0.05,  # 宽度变化
                     height_shift_range=0.05,  # 高度变化
@@ -17,6 +18,7 @@ data_gen_args = dict(rotation_range=0.2,  # 旋转
                     zoom_range=0.05,  # 缩放
                     horizontal_flip=True,  # 水平旋转
                     fill_mode='nearest')
+# 验证集参数
 val_gen_args = dict()
 
 # 加载数据集
