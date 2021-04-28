@@ -2,13 +2,13 @@
 #
 from model import *
 from data import *
-# from net1 import *
+from net1 import *
 import matplotlib.pyplot as plt
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # 调试时使用（影响运行速度）
-# tf.config.experimental_run_functions_eagerly(True)
+tf.config.experimental_run_functions_eagerly(True)
 
 # 数据增强参数
 # 训练集参数
@@ -31,18 +31,17 @@ valGene = trainGenerator(2, 'data/membrane/validation', 'image', 'mask', val_gen
 testGene = testGenerator("data/membrane/test")
 
 # 加载网络模型（测试多个）
-model = unet()
-# model = net1()
+# model = unet('unet_membrane.hdf5')
+model = unet1()
 
 # keras 回调函数
-# callback EarlyStopping(monitor='acc', patience=1), ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=1)
-callbacks_list = [EarlyStopping(monitor='accuracy', patience=2),
-                  ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=3),
+# callback EarlyStopping(monitor='acc', patience=3), ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2)
+callbacks_list = [ReduceLROnPlateau(monitor="val_loss", factor=0.2, patience=2),
                   ModelCheckpoint('unet_membrane.hdf5', monitor='loss', verbose=1, save_best_only=True),
                   TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)
                   ]
 # 训练网络
-history = model.fit_generator(myGene, steps_per_epoch=32, epochs=20, callbacks=callbacks_list,
+history = model.fit_generator(myGene, steps_per_epoch=32, epochs=6, callbacks=callbacks_list,
                               validation_data=valGene, validation_steps=2)
 
 results = model.predict_generator(testGene, 30, verbose=1)

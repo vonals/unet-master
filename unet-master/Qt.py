@@ -11,10 +11,15 @@ from PySide2.QtCore import Slot
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtGui import QIcon, QPixmap, QImage, QPainter
 # import pyqtgraph as pg
+from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array
+import numpy as np
+from model import *
 
 class Stats:
 
     def __init__(self):
+
         # 从文件中加载UI定义
         # 从 UI 定义中动态 创建一个相应的窗口对象
         # 注意：里面的控件对象也成为窗口对象的属性了
@@ -48,6 +53,13 @@ class Stats:
         img = QPixmap(filename)
         # 设定 QLabel 的 pixmap
         self.ui.label_2.setPixmap(img)
+        # # 加载预训练网络
+        # model = unet("unet_membrane.hdf5")
+        # img2 = load_img(filename)
+        # img2 = img_to_array(img2)
+        # img2 = np.expand_dims(img2, axis=0)
+        # result = model.predict(img2)
+        # self.ui.label.setPixmap(result)
         print(img)
         print('FileDirectory')
 
