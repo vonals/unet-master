@@ -16,7 +16,6 @@ class Stats:
 
     def __init__(self):
         # 从文件中加载UI定义
-
         # 从 UI 定义中动态 创建一个相应的窗口对象
         # 注意：里面的控件对象也成为窗口对象的属性了
         # 比如 self.ui.button , self.ui.textEdit
@@ -35,7 +34,7 @@ class Stats:
 
     def handleShowPic(self):
 
-        self.ui.textEdit_2.setText("AAAAA")
+        self.ui.textEdit.setText("AAAAA")
     # 打开文件处理
     def handleAddFile(self):
         # self.ui.textEdit.setText("AAAAA")
