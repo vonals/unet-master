@@ -1,4 +1,4 @@
-# 有问题的评估函数
+# 有问题(添加后无法通过动态图训练，慢)的评估函数
 #
 import keras.backend as K
 import numpy as np
