@@ -3,7 +3,7 @@
 # from model import *
 from data import *
 from net1 import *
-import matplotlib.pyplot as plt
+
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 

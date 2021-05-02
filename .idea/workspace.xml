@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="添加iou,更改net1，添加2层bn层，收敛加速">
+    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/Qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/Qt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/UI/main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/UI/main.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/metrics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/net1.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/net1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +207,11 @@
       <workItem from="1619421814147" duration="22920000" />
       <workItem from="1619571414596" duration="15345000" />
       <workItem from="1619613621616" duration="3223000" />
-      <workItem from="1619929839268" duration="14804000" />
+      <workItem from="1619929839268" duration="17009000" />
+      <workItem from="1619957320333" duration="218000" />
+      <workItem from="1619957552052" duration="711000" />
+      <workItem from="1619958469786" duration="673000" />
+      <workItem from="1619959276284" duration="688000" />
     </task>
     <task id="LOCAL-00001" summary="添加评估函数（未使用）">
       <created>1618882374393</created>
@@ -289,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619617093182</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="去除iou（value error 原因），重新训练">
+      <created>1619954099540</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1619954099540</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,12 +327,13 @@
     <MESSAGE value="更新可用界面" />
     <MESSAGE value="完善callback和validation" />
     <MESSAGE value="添加iou,更改net1，添加2层bn层，收敛加速" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加iou,更改net1，添加2层bn层，收敛加速" />
+    <MESSAGE value="去除iou（value error 原因），重新训练" />
+    <option name="LAST_COMMIT_MESSAGE" value="去除iou（value error 原因），重新训练" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/unet_master$Qt.coverage" NAME="Qt Coverage Results" MODIFIED="1619937217297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
+    <SUITE FILE_PATH="coverage/unet_master$Qt.coverage" NAME="Qt Coverage Results" MODIFIED="1619956684966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
     <SUITE FILE_PATH="coverage/unet_master$test.coverage" NAME="test Coverage Results" MODIFIED="1617781957417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
-    <SUITE FILE_PATH="coverage/unet_master$main.coverage" NAME="main Coverage Results" MODIFIED="1619943949326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
+    <SUITE FILE_PATH="coverage/unet_master$main.coverage" NAME="main Coverage Results" MODIFIED="1619959390652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
     <SUITE FILE_PATH="coverage/unet_lung$main.coverage" NAME="main Coverage Results" MODIFIED="1618571693324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
   </component>
 </project>

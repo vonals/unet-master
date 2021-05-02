@@ -15,7 +15,6 @@ from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 import numpy as np
 import matplotlib.pyplot as plt
-from PIL import Image
 from model import *
 from net1 import *
 from data import *

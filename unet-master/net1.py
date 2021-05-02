@@ -12,6 +12,7 @@ from keras.layers import *
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TensorBoard, EarlyStopping, ReduceLROnPlateau
 from keras import backend as keras
+from keras.utils import plot_model
 from metrics import *
 
 
@@ -73,7 +74,7 @@ def unet1(pretrained_weights = None,input_size = (256,256,1)):
     # metrics:评价指标
 
     #model.summary()
-
+    plot_model(model,to_file='img/model.png')
     # 加载预训练网络
     if(pretrained_weights):
     	model.load_weights(pretrained_weights)
