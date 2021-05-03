@@ -33,17 +33,18 @@ testGene = testGenerator("data/membrane/test")
 
 # 加载网络模型（测试多个）
 # model = unet('unet_membrane.hdf5')
-model = unet1('unet_membrane.hdf5')
+# model = unet1('unet_membrane.hdf5')
+model = unet1()
 
 # keras 回调函数
 # callback EarlyStopping(monitor='acc', patience=3), ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2)
-callbacks_list = [ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2),
+callbacks_list = [ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=1),
                   ModelCheckpoint('unet_membrane.hdf5', monitor='loss', verbose=1, save_best_only=True),
                   TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)
                   ]
 # 训练网络
-model.fit_generator(myGene, steps_per_epoch=32, epochs=20, callbacks=callbacks_list,
-                    validation_data=valGene, validation_steps=2)
+model.fit_generator(myGene, steps_per_epoch=14, epochs=50, callbacks=callbacks_list,
+                    validation_data=valGene, validation_steps=1)
 
 results = model.predict_generator(testGene, 30, verbose=1)
 # results = model.evaluate(testGene, 30, verbose=1)

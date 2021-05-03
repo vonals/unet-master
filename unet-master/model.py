@@ -9,6 +9,7 @@ import numpy as np
 from pandas import *
 from keras.models import *
 from keras.layers import *
+from keras.losses import *
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TensorBoard, EarlyStopping, ReduceLROnPlateau
 from keras import backend as keras
@@ -65,7 +66,7 @@ def unet(pretrained_weights = None,input_size = (256,256,1)):
 
     model = Model(inputs = inputs, outputs = conv10)
 
-    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy'])
+    model.compile(optimizer = Adam(lr = 1e-4), loss = BinaryCrossentropy(), metrics = ['accuracy'])
     # optimizer:优化器及参数
     # loss:损失函数
     # metrics:评价指标
