@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="扩大数据集，修改超参数，添加keras自带MeanIou和新损失函数">
-      <change afterPath="$PROJECT_DIR$/unet-master/net2.py" afterDir="false" />
+    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="修改注释和一些函数名">
+      <change afterPath="$PROJECT_DIR$/unet-master/logo.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unet-master/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/Qt.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/Qt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/metrics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/net1.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/net1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unet-master/net2.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/net2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +218,7 @@
       <workItem from="1620036953064" duration="4973000" />
       <workItem from="1620054040902" duration="118000" />
       <workItem from="1620057578865" duration="50000" />
-      <workItem from="1620112930716" duration="460000" />
+      <workItem from="1620112930716" duration="1558000" />
     </task>
     <task id="LOCAL-00001" summary="添加评估函数（未使用）">
       <created>1618882374393</created>
@@ -311,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620050674475</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="修改注释和一些函数名">
+      <created>1620113555198</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1620113555198</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +350,8 @@
     <MESSAGE value="添加iou,更改net1，添加2层bn层，收敛加速" />
     <MESSAGE value="去除iou（value error 原因），重新训练" />
     <MESSAGE value="扩大数据集，修改超参数，添加keras自带MeanIou和新损失函数" />
-    <option name="LAST_COMMIT_MESSAGE" value="扩大数据集，修改超参数，添加keras自带MeanIou和新损失函数" />
+    <MESSAGE value="修改注释和一些函数名" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改注释和一些函数名" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/unet_master$Qt.coverage" NAME="Qt Coverage Results" MODIFIED="1619956684966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />

@@ -1,13 +1,13 @@
 # 主函数
 #
 # from model import *
+# from net1 import *
+from net2 import *
 from data import *
-from net1 import *
-
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-# 调试时使用（静态图模式，影响运行速度）
+# 调试时使用（tf静态图模式，影响运行速度）
 # tf.config.experimental_run_functions_eagerly(True)
 
 
@@ -34,10 +34,13 @@ testGene = testGenerator("data/membrane/test")
 # 加载网络模型（测试多个）
 # model = UNet('unet_membrane.hdf5')
 # model = UNet1('unet_membrane.hdf5')
-model = UNet1()
+# model = UNet1()
+model = NestedUNet()
 
 # keras 回调函数
-# callback EarlyStopping(monitor='acc', patience=3), ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2)
+# callback
+# EarlyStopping(monitor='acc', patience=3)
+# , ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2)
 callbacks_list = [ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=1),
                   ModelCheckpoint('unet_membrane.hdf5', monitor='loss', verbose=1, save_best_only=True),
                   TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)
