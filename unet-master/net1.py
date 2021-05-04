@@ -1,4 +1,5 @@
-# 测试过的unet模型
+# 已测试
+# unet模型添加2层bn
 #
 import numpy as np
 import os
@@ -20,7 +21,7 @@ from metrics import *
 
 
 # 模型结构
-def unet1(pretrained_weights = None,input_size = (256,256,1)):
+def UNet1(pretrained_weights = None,input_size = (256,256,1)):
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv1)
@@ -76,7 +77,7 @@ def unet1(pretrained_weights = None,input_size = (256,256,1)):
     # metrics:评价指标
 
     #model.summary()
-    plot_model(model, to_file='img/model.png')
+    plot_model(model, to_file='img/UNet1_model.png')
     # 加载预训练网络
     if(pretrained_weights):
     	model.load_weights(pretrained_weights)

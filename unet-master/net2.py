@@ -1,6 +1,5 @@
-# 已测试
-# unet模型添加2层dropout
-#
+# 未测试
+# unet++
 import numpy as np
 import os
 import tensorflow as tf
@@ -10,16 +9,18 @@ import numpy as np
 from pandas import *
 from keras.models import *
 from keras.layers import *
-from keras.losses import *
 from keras.optimizers import *
+from keras.losses import *
+from keras.metrics import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TensorBoard, EarlyStopping, ReduceLROnPlateau
 from keras import backend as keras
+from keras.utils import plot_model
 from metrics import *
 
 
 
 # 模型结构
-def UNet(pretrained_weights = None,input_size = (256,256,1)):
+def NestedUNet(pretrained_weights = None,input_size = (256,256,1)):
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv1)
@@ -32,12 +33,14 @@ def UNet(pretrained_weights = None,input_size = (256,256,1)):
     pool3 = MaxPooling2D(pool_size=(2, 2))(conv3)
     conv4 = Conv2D(512, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(pool3)
     conv4 = Conv2D(512, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv4)
-    drop4 = Dropout(0.5)(conv4)
+    bach1 = BatchNormalization()(conv4)
+    drop4 = Dropout(0.5)(bach1)
     pool4 = MaxPooling2D(pool_size=(2, 2))(drop4)
 
     conv5 = Conv2D(1024, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(pool4)
     conv5 = Conv2D(1024, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv5)
-    drop5 = Dropout(0.5)(conv5)
+    bach2 = BatchNormalization()(conv5)
+    drop5 = Dropout(0.5)(bach2)
 
     up6 = Conv2D(512, 2, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(UpSampling2D(size = (2, 2))(drop5))
     merge6 = Concatenate(axis=3)([conv4, up6])
@@ -51,13 +54,13 @@ def UNet(pretrained_weights = None,input_size = (256,256,1)):
     conv7 = Conv2D(256, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(merge7)
     conv7 = Conv2D(256, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv7)
 
-    up8 = Conv2D(128, 2, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(UpSampling2D(size = (2,2))(conv7))
+    up8 = Conv2D(128, 2, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(UpSampling2D(size = (2, 2))(conv7))
     merge8 = Concatenate(axis=3)([conv2, up8])
     # merge8 = merge([conv2,up8], mode = 'concat', concat_axis = 3)
     conv8 = Conv2D(128, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(merge8)
     conv8 = Conv2D(128, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv8)
 
-    up9 = Conv2D(64, 2, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(UpSampling2D(size = (2,2))(conv8))
+    up9 = Conv2D(64, 2, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(UpSampling2D(size = (2, 2))(conv8))
     merge9 = Concatenate(axis=3)([conv1, up9])
     # merge9 = merge([conv1,up9], mode = 'concat', concat_axis = 3)
     conv9 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(merge9)
@@ -67,13 +70,13 @@ def UNet(pretrained_weights = None,input_size = (256,256,1)):
 
     model = Model(inputs = inputs, outputs = conv10)
 
-    model.compile(optimizer = Adam(lr = 1e-4), loss = BinaryCrossentropy(), metrics = ['accuracy'])
+    model.compile(optimizer = Adam(lr = 1e-4), loss = tf.keras.losses.BinaryCrossentropy(), metrics = ['accuracy', MeanIoU(num_classes=2)])
     # optimizer:优化器及参数
     # loss:损失函数
     # metrics:评价指标
 
     #model.summary()
-
+    plot_model(model, to_file='img/NestedUNet_model.png')
     # 加载预训练网络
     if(pretrained_weights):
     	model.load_weights(pretrained_weights)

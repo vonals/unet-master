@@ -27,8 +27,8 @@ class Stats:
         # 从 UI 定义中动态 创建一个相应的窗口对象
         # 注意：里面的控件对象也成为窗口对象的属性了
         # 比如 self.ui.button , self.ui.textEdit
-        loader = QUiLoader()
 
+        # loader = QUiLoader()
         # loader.registerCustomWidget(QImage)
         self.ui = QUiLoader().load('UI/main.ui')
         # 菜单栏
@@ -57,7 +57,7 @@ class Stats:
 
 
         # # 加载预训练网络
-        model = unet1("unet_membrane.hdf5")
+        model = UNet1("unet_membrane.hdf5")
         qGene = QGenerator(filename)
         result = model.predict_generator(qGene, 1, verbose=1)
         saveResult("data/membrane/temp", result)
@@ -70,7 +70,6 @@ class Stats:
         # plt.imshow(result)
         # plt.show()
 
-
         print(img)
         print(img2)
         print('FileDirectory')
@@ -82,7 +81,5 @@ app.setWindowIcon(QIcon('logo.png'))
 stats = Stats()
 # 显示ui
 stats.ui.show()
-
-
 # 关闭窗口
 app.exec_()
