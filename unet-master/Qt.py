@@ -16,7 +16,7 @@ from keras.preprocessing.image import img_to_array
 import numpy as np
 import matplotlib.pyplot as plt
 from model import *
-from net1 import *
+from NewUNet import *
 from data import *
 
 class Stats:
