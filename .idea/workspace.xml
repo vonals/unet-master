@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="测试UNet++的deep_supervision模式（前4张图报错），loss更新为dice_loss,metrics更新为正常iou">
+    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="测试UNet++的deep_supervision模式(直接爆炸），loss更新为dice_loss,metrics更新为正常iou">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/metrics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +28,13 @@
       </map>
     </option>
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -57,14 +60,14 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="credentialsType com.jetbrains.python.remote.PyCreateRemoteInterpreterDialog$PyCreateRemoteSdkForm" value="Web Deployment" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/anaconda3/envs/tensorflow/python.exe" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -218,7 +221,8 @@
       <workItem from="1620112930716" duration="4406000" />
       <workItem from="1620351104785" duration="324000" />
       <workItem from="1620370323576" duration="9217000" />
-      <workItem from="1620531889782" duration="8488000" />
+      <workItem from="1620531889782" duration="10476000" />
+      <workItem from="1620566315830" duration="1544000" />
     </task>
     <task id="LOCAL-00001" summary="添加评估函数（未使用）">
       <created>1618882374393</created>
@@ -339,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620555338967</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="测试UNet++的deep_supervision模式(直接爆炸），loss更新为dice_loss,metrics更新为正常iou">
+      <created>1620564378669</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1620564378670</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +386,8 @@
     <MESSAGE value="修改格式，Net2准备好成为NestedUNet" />
     <MESSAGE value="NestedUNet测试完成，结果良好" />
     <MESSAGE value="测试UNet++的deep_supervision模式（前4张图报错），loss更新为dice_loss,metrics更新为正常iou" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试UNet++的deep_supervision模式（前4张图报错），loss更新为dice_loss,metrics更新为正常iou" />
+    <MESSAGE value="测试UNet++的deep_supervision模式(直接爆炸），loss更新为dice_loss,metrics更新为正常iou" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试UNet++的deep_supervision模式(直接爆炸），loss更新为dice_loss,metrics更新为正常iou" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/unet_master$Qt.coverage" NAME="Qt Coverage Results" MODIFIED="1619956684966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
