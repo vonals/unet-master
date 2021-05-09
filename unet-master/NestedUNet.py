@@ -16,6 +16,7 @@ from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TensorBoard,
 from keras import backend as keras
 from keras.utils import plot_model
 from metrics import *
+from loss import *
 
 
 # 块
@@ -119,8 +120,9 @@ def NestedUNet(pretrained_weights=None, input_size=(256, 256, 1), using_deep_sup
         model = Model(inputs=inputs, outputs=nestnet_output_4)
 
 
-    model.compile(optimizer=Adam(lr=1e-4), loss=tf.keras.losses.BinaryCrossentropy(),
-                  metrics=['accuracy', MeanIoU(num_classes=2)])
+    # tf.keras.losses.BinaryCrossentropy()
+    model.compile(optimizer=Adam(lr=1e-4), loss=bce_dice_loss,
+                  metrics=['accuracy', my_iou_metric])
     # optimizer:优化器及参数
     # loss:损失函数
     # metrics:评价指标
