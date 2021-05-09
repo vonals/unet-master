@@ -7,6 +7,7 @@ import os
 import glob
 import skimage.io as io
 import skimage.transform as trans
+from skimage import img_as_ubyte
 
 Sky = [128,128,128]
 Building = [128,0,0]
@@ -72,11 +73,12 @@ def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, 
 def testGenerator(test_path, num_image = 30, target_size = (256, 256), flag_multi_class = False, as_gray = True):
     for i in range(num_image):
         img = io.imread(os.path.join(test_path, "%d.tif" % i), as_gray = as_gray)
-        img = img / 255
+        img = img/255
         img = trans.resize(img,target_size)
         img = np.reshape(img, img.shape+(1,)) if (not flag_multi_class) else img
         img = np.reshape(img, (1,)+img.shape)
         yield img
+
 
 def QGenerator(test_path, num_image = 1, target_size = (256, 256), flag_multi_class = False, as_gray = True):
     for i in range(num_image):
@@ -86,6 +88,7 @@ def QGenerator(test_path, num_image = 1, target_size = (256, 256), flag_multi_cl
         img = np.reshape(img, img.shape+(1,)) if (not flag_multi_class) else img
         img = np.reshape(img, (1,)+img.shape)
         yield img
+
 
 def geneTrainNpy(image_path, mask_path, image_prefix = "image", mask_prefix = "mask", image_as_gray = True, mask_as_gray = True):
     image_name_arr = glob.glob(os.path.join(image_path, "%s*.png"%image_prefix))
@@ -111,11 +114,12 @@ def labelVisualize(num_class, color_dict, img):
         img_out[img == i, :] = color_dict[i]
     return img_out / 255
 
+
 # 保存结果
 def saveResult(save_path,npyfile):
     for i, item in enumerate(npyfile):
         img = item[:, :, 0]
-        io.imsave(os.path.join(save_path, "%d_predict.png" % i), img)
+        io.imsave(os.path.join(save_path, "%d_predict.tif" % i), img_as_ubyte(img))
 
 
 

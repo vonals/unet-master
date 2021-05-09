@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="NestedUNet测试完成，结果良好">
+    <list default="true" id="bac94c74-0ae8-4532-8ea5-2893d962bc7d" name="Default Changelist" comment="测试UNet++的deep_supervision模式（前4张图报错），loss更新为dice_loss,metrics更新为正常iou">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/NestedUNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/NestedUNet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unet-master/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unet-master/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unet-master/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/unet-master/metrics.py" afterDir="false" />
     </list>
@@ -219,7 +218,7 @@
       <workItem from="1620112930716" duration="4406000" />
       <workItem from="1620351104785" duration="324000" />
       <workItem from="1620370323576" duration="9217000" />
-      <workItem from="1620531889782" duration="4497000" />
+      <workItem from="1620531889782" duration="8488000" />
     </task>
     <task id="LOCAL-00001" summary="添加评估函数（未使用）">
       <created>1618882374393</created>
@@ -333,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620374772208</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="测试UNet++的deep_supervision模式（前4张图报错），loss更新为dice_loss,metrics更新为正常iou">
+      <created>1620555338967</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1620555338967</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,12 +374,13 @@
     <MESSAGE value="修改注释和一些函数名" />
     <MESSAGE value="修改格式，Net2准备好成为NestedUNet" />
     <MESSAGE value="NestedUNet测试完成，结果良好" />
-    <option name="LAST_COMMIT_MESSAGE" value="NestedUNet测试完成，结果良好" />
+    <MESSAGE value="测试UNet++的deep_supervision模式（前4张图报错），loss更新为dice_loss,metrics更新为正常iou" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试UNet++的deep_supervision模式（前4张图报错），loss更新为dice_loss,metrics更新为正常iou" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/unet_master$Qt.coverage" NAME="Qt Coverage Results" MODIFIED="1619956684966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
     <SUITE FILE_PATH="coverage/unet_master$test.coverage" NAME="test Coverage Results" MODIFIED="1617781957417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
-    <SUITE FILE_PATH="coverage/unet_master$main.coverage" NAME="main Coverage Results" MODIFIED="1620554967808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
+    <SUITE FILE_PATH="coverage/unet_master$main.coverage" NAME="main Coverage Results" MODIFIED="1620563905639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
     <SUITE FILE_PATH="coverage/unet_lung$main.coverage" NAME="main Coverage Results" MODIFIED="1618571693324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unet-master" />
   </component>
 </project>

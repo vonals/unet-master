@@ -3,10 +3,10 @@
 import keras.backend as K
 import numpy as np
 import tensorflow as tf
+
+
 #
 # # 自定义评价函数
-
-
 def get_iou_vector(A, B):
     # Numpy version
     batch_size = A.shape[0]
@@ -39,4 +39,5 @@ def get_iou_vector(A, B):
 
 def my_iou_metric(label, pred):
     # Tensorflow version
-    return tf.compat.v1.py_func(get_iou_vector, [label, pred > 0.5], tf.float64)
+    return tf.numpy_function(get_iou_vector, [label, pred > 0.5], tf.float64)
+    # return tf.compat.v1.py_func(get_iou_vector, [label, pred > 0.5], tf.float64)

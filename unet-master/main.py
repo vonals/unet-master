@@ -38,16 +38,18 @@ testGene = testGenerator("data/membrane/test")
 # model = UNet1()
 # model = FCN()
 # model = NestedUNet('unet_membrane.hdf5', using_deep_supervision=True)
-model = NestedUNet(using_deep_supervision=True)
-
+# model = NestedUNet(using_deep_supervision=True)
+# model = NestedUNet()
+model = NestedUNet('unet_membrane.hdf5')
 
 
 # keras 回调函数
 # callback
-# EarlyStopping(monitor='acc', patience=3)
+# EarlyStopping(monitor='acc', patience=3),
 # , ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2)
-callbacks_list = [ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2),
-                  ModelCheckpoint('unet_membrane.hdf5', monitor='loss', verbose=1, save_best_only=True),
+callbacks_list = [
+                  ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2),
+                  ModelCheckpoint('unet_membrane.hdf5', monitor='val_loss', verbose=1, save_best_only=True),
                   TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)
                   ]
 # 训练网络
