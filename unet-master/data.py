@@ -116,7 +116,10 @@ def labelVisualize(num_class, color_dict, img):
 
 
 # 保存结果
-def saveResult(save_path,npyfile):
+def saveResult(save_path, npyfile, deep_supervision=False):
+    if(deep_supervision):
+        # lenth = len(npyfile)
+        npyfile = npyfile[-1]
     for i, item in enumerate(npyfile):
         img = item[:, :, 0]
         io.imsave(os.path.join(save_path, "%d_predict.tif" % i), img_as_ubyte(img))

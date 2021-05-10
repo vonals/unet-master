@@ -38,9 +38,9 @@ testGene = testGenerator("data/membrane/test")
 # model = UNet1()
 # model = FCN()
 # model = NestedUNet('unet_membrane.hdf5', using_deep_supervision=True)
-# model = NestedUNet(using_deep_supervision=True)
+model = NestedUNet(using_deep_supervision=True)
 # model = NestedUNet()
-model = NestedUNet('unet_membrane.hdf5')
+# model = NestedUNet('unet_membrane.hdf5')
 
 
 # keras 回调函数
@@ -59,7 +59,7 @@ model.fit_generator(myGene, steps_per_epoch=14, epochs=20, callbacks=callbacks_l
 
 results = model.predict_generator(testGene, 30, verbose=1)
 # 保存分割后的图像
-saveResult("data/membrane/test", results)
+saveResult("data/membrane/test", results, deep_supervision=True)
 
 # # 显示loss和val_loss（过拟合可视化）
 # loss = history.history['loss']
