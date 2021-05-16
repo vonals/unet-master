@@ -37,8 +37,8 @@ testGene = testGenerator("data/membrane/test")
 # model = UNet1('unet_membrane.hdf5')
 # model = UNet1()
 # model = FCN()
-# model = NestedUNet('unet_membrane.hdf5', using_deep_supervision=True)
-model = NestedUNet(using_deep_supervision=True)
+model = NestedUNet('unet_membrane.hdf5', using_deep_supervision=True)
+# model = NestedUNet(using_deep_supervision=True)
 # model = NestedUNet()
 # model = NestedUNet('unet_membrane.hdf5')
 
@@ -47,20 +47,23 @@ model = NestedUNet(using_deep_supervision=True)
 # callback
 # EarlyStopping(monitor='acc', patience=3),
 # , ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2)
+# callbacks 通常指标 val_loss
+# deep supervision使用指标   val_output_4_loss
 callbacks_list = [
-                  ReduceLROnPlateau(monitor="val_loss", factor=0.1, patience=2),
-                  ModelCheckpoint('unet_membrane.hdf5', monitor='val_loss', verbose=1, save_best_only=True),
+                  ReduceLROnPlateau(monitor="val_output_4_loss", factor=0.1, patience=2),
+                  ModelCheckpoint('unet_membrane.hdf5', monitor='val_output_4_loss', verbose=1, save_best_only=True),
                   TensorBoard(log_dir="./logs", histogram_freq=1, embeddings_freq=1)
                   ]
 # 训练网络
 # callbacks=callbacks_list,
-model.fit_generator(myGene, steps_per_epoch=14, epochs=20, callbacks=callbacks_list,
+model.fit_generator(myGene, steps_per_epoch=14, epochs=10, callbacks=callbacks_list,
                     validation_data=valGene, validation_steps=1)
 
-results = model.predict_generator(testGene, 30, verbose=1)
+# 得到分割结果
+results = model.predict(testGene, 30, verbose=1)
 # 保存分割后的图像
-saveResult("data/membrane/test", results, deep_supervision=True)
-
+# saveResult("data/membrane/test", results, deep_supervision=True)
+saveResult("data/membrane/test", results, deep_supervision=True, mode_accuracy=True)
 # # 显示loss和val_loss（过拟合可视化）
 # loss = history.history['loss']
 # val_loss = history.history['val_loss']

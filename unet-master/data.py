@@ -37,11 +37,6 @@ def adjustData(img, mask):
 def trainGenerator(batch_size, train_path, image_folder, mask_folder, aug_dict, image_color_mode = "grayscale",
                     mask_color_mode = "grayscale", image_save_prefix  = "image", mask_save_prefix  = "mask",
                    save_to_dir = None, target_size = (256,256),seed = 1):
-    '''
-    can generate image and mask at the same time
-    use the same seed for image_datagen and mask_datagen to ensure the transformation for image and mask is the same
-    if you want to visualize the results of generator, set save_to_dir = "your path"
-    '''
     image_datagen = image.ImageDataGenerator(**aug_dict)  # 创建ImageDataGenerator生成器
     mask_datagen = image.ImageDataGenerator(**aug_dict)
     image_generator = image_datagen.flow_from_directory(
@@ -116,12 +111,19 @@ def labelVisualize(num_class, color_dict, img):
 
 
 # 保存结果
-def saveResult(save_path, npyfile, deep_supervision=False):
+def saveResult(save_path, npyfile, deep_supervision=False, mode_accuracy=False):
     if(deep_supervision):
         # lenth = len(npyfile)
-        npyfile = npyfile[-1]
+        # 准确模式 （有问题）
+        if(mode_accuracy):
+            npyfile = (npyfile[0]+npyfile[1]*2+npyfile[2]*4+npyfile[3]*5)/12
+        else:
+            npyfile = npyfile[-1]
     for i, item in enumerate(npyfile):
         img = item[:, :, 0]
+        # 对结果进行二值化
+        img[img > 0.2] = 1
+        img[img <= 0.2] = 0
         io.imsave(os.path.join(save_path, "%d_predict.tif" % i), img_as_ubyte(img))
 
 
