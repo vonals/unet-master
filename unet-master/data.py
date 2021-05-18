@@ -112,18 +112,22 @@ def labelVisualize(num_class, color_dict, img):
 
 # 保存结果
 def saveResult(save_path, npyfile, deep_supervision=False, mode_accuracy=False):
+    for i in range(len(npyfile)):
+        npyfile[i][npyfile[i] > 0.1] = 1
+        npyfile[i][npyfile[i] <= 0.1] = 0
     if(deep_supervision):
         # lenth = len(npyfile)
         # 准确模式 （有问题）
         if(mode_accuracy):
-            npyfile = (npyfile[0]+npyfile[1]*2+npyfile[2]*4+npyfile[3]*5)/12
+            # 4输出加权混合模式
+            npyfile = (npyfile[0]+npyfile[1]*2+npyfile[2]*4+npyfile[3]*8)/15
         else:
             npyfile = npyfile[-1]
     for i, item in enumerate(npyfile):
         img = item[:, :, 0]
         # 对结果进行二值化
-        img[img > 0.2] = 1
-        img[img <= 0.2] = 0
+        img[img > 0.3] = 1
+        img[img <= 0.3] = 0
         io.imsave(os.path.join(save_path, "%d_predict.tif" % i), img_as_ubyte(img))
 
 

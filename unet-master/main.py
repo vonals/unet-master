@@ -17,7 +17,7 @@ from data import *
 data_gen_args = dict(rotation_range=0.2,  # 旋转
                      width_shift_range=0.05,  # 宽度变化
                      height_shift_range=0.05,  # 高度变化
-                     shear_range=0.05,  #
+                     shear_range=0.05,  # 错切
                      zoom_range=0.05,  # 缩放
                      horizontal_flip=True,  # 水平旋转
                      fill_mode='nearest')
@@ -28,7 +28,7 @@ val_gen_args = dict()
 # 训练集
 myGene = trainGenerator(2, 'data/membrane/train', 'image', 'label', data_gen_args, save_to_dir=None)
 # 验证集
-valGene = trainGenerator(2, 'data/membrane/validation', 'image', 'mask', val_gen_args, save_to_dir=None)
+valGene = trainGenerator(2, 'data/membrane/validation', 'image', 'label', val_gen_args, save_to_dir=None)
 # 测试集
 testGene = testGenerator("data/membrane/test")
 
