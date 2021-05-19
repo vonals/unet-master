@@ -22,14 +22,14 @@ from loss import *
 # 块
 def conv_bachnorm_relu_block(input_tensor, nb_filter, kernel_size=3):
     x = Conv2D(nb_filter, (kernel_size, kernel_size), padding='same')(input_tensor)
-    x = BatchNormalization(axis=2)(x)
+    # x = BatchNormalization(axis=2)(x)
     x = Activation('relu')(x)
 
     return x
 
 
 # 模型结构
-def NestedUNet(pretrained_weights=None, input_size=(256, 256, 1), using_deep_supervision=False):
+def NestedUNet3(pretrained_weights=None, input_size=(256, 256, 1), using_deep_supervision=False):
     nb_filter = [32, 64, 128, 256, 512]
     inputs = Input(input_size)
 

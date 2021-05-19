@@ -8,6 +8,7 @@ import glob
 import skimage.io as io
 import skimage.transform as trans
 from skimage import img_as_ubyte
+from sklearn.ensemble import VotingClassifier
 
 Sky = [128,128,128]
 Building = [128,0,0]
@@ -112,15 +113,18 @@ def labelVisualize(num_class, color_dict, img):
 
 # 保存结果
 def saveResult(save_path, npyfile, deep_supervision=False, mode_accuracy=False):
-    for i in range(len(npyfile)):
-        npyfile[i][npyfile[i] > 0.1] = 1
-        npyfile[i][npyfile[i] <= 0.1] = 0
+    # 试图每人一票时归一化
+    # for i in range(len(npyfile)):
+    #     npyfile[i][npyfile[i] > 0.1] = 1
+    #     npyfile[i][npyfile[i] <= 0.1] = 0
     if(deep_supervision):
         # lenth = len(npyfile)
         # 准确模式 （有问题）
         if(mode_accuracy):
             # 4输出加权混合模式
-            npyfile = (npyfile[0]+npyfile[1]*2+npyfile[2]*4+npyfile[3]*8)/15
+            npyfile = (npyfile[0]*1+npyfile[1]*1+npyfile[2]*2+npyfile[3]*4)/8
+            # volting = VotingClassifier(npyfile, voting='soft')
+
         else:
             npyfile = npyfile[-1]
     for i, item in enumerate(npyfile):

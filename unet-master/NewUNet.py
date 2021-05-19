@@ -17,6 +17,7 @@ from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TensorBoard,
 from keras import backend as keras
 from keras.utils import plot_model
 from metrics import *
+from loss import *
 
 
 # 模型结构
@@ -74,13 +75,13 @@ def UNet1(pretrained_weights=None, input_size=(256, 256, 1)):
 
     model = Model(inputs=inputs, outputs=conv10)
 
-    model.compile(optimizer=Adam(lr=1e-4), loss=tf.keras.losses.BinaryCrossentropy(),
-                  metrics=['accuracy', MeanIoU(num_classes=2)])
+    model.compile(optimizer=Adam(lr=1e-4), loss=bce_dice_loss,
+                  metrics=['accuracy', my_iou_metric])
     # optimizer:优化器及参数
     # loss:损失函数
     # metrics:评价指标
 
-    # model.summary()
+    model.summary()
     plot_model(model, to_file='img/UNet1_model.png')
     # 加载预训练网络
     if (pretrained_weights):

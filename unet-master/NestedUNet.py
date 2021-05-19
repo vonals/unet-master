@@ -127,7 +127,7 @@ def NestedUNet(pretrained_weights=None, input_size=(256, 256, 1), using_deep_sup
     # loss:损失函数
     # metrics:评价指标
 
-    # model.summary()
+    model.summary()
     plot_model(model, to_file='img/NestedUNet_model.png')
     # 加载预训练网络
     if (pretrained_weights):
